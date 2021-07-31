@@ -4,9 +4,10 @@ const httpNode = require("./webpack/http-node");
 
 var serverConfig = {
   target: httpNode,
-  entry: ["@babel/polyfill", path.resolve(__dirname, "src/index.js")],
+  entry: "/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
+    webassemblyModuleFilename: "[hash].wasm",
     publicPath:
       "https://api.github.com?owner=tysonrm&repo=assembnly-script-aegis&filedir=dist&branch=main",
     libraryTarget: "commonjs",
@@ -46,31 +47,12 @@ var serverConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "microservices",
-      library: { type: "commonjs-module" },
+      name: "wasm",
+      //llibrary: { type: "commonjs-modudle" },
       filename: "remoteEntry.js",
       exposes: {
-        "./domain": "./src/domain",
-        // "./adapters": "./src/adapters",
-        // "./services": "./src/services",
-        // "./validations": "./src/models/mixins",
-        // "./event-bus": "./src/services/event-bus",
-        // "./wasm": "./src/wasm",
+        "./index": "./",
       },
-      //   shared: {
-      //     axios: {
-      //       eager: true,
-      //     },
-      //     "smartystreets-javascript-sdk": {
-      //       eager: true,
-      //     },
-      //     kafkajs: {
-      //       eager: true,
-      //     },
-      //     nanoid: {
-      //       eager: true,
-      //     },
-      //   },
     }),
   ],
 };
