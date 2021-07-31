@@ -17,7 +17,7 @@ var fs = __webpack_require__(/*! fs */ "fs");
 var loader = __webpack_require__(/*! @assemblyscript/loader */ "./node_modules/@assemblyscript/loader/umd/index.js");
 
 var imports = {
-  /* imports go here */
+  add: add
 };
 var wasmModule = loader.instantiateSync(fs.readFileSync(__dirname + "/build/optimized.wasm"), imports);
 module.exports = wasmModule.exports;
