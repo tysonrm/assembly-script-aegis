@@ -7,7 +7,6 @@ var serverConfig = {
   entry: "/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    webassemblyModuleFilename: "[hash].wasm",
     publicPath:
       "https://api.github.com?owner=tysonrm&repo=assembnly-script-aegis&filedir=dist&branch=main",
     libraryTarget: "commonjs",
@@ -51,7 +50,7 @@ var serverConfig = {
       //llibrary: { type: "commonjs-modudle" },
       filename: "remoteEntry.js",
       exposes: {
-        "./index": "./",
+        "./domain": "./src/domain",
       },
     }),
   ],

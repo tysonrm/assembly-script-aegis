@@ -1,1 +1,1 @@
-export * as models from "./";
+export * from "./WasmModel";
